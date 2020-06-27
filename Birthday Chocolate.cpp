@@ -2,7 +2,6 @@
 using namespace std;
 
 int main() {
-    // Solve by prefix sum
     int n;
     vector<int> arr;
     cin>>n;
