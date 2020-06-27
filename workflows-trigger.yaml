@@ -28,6 +28,7 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.TOKEN }}@github.com/WendyYanto/HackerRank-Solutions
           echo "[LOG] Git pull origin"
           git config pull.rebase false
+          git pull
           echo "[LOG] Git add ."
           git add .
           echo "[Log] Git Commit"
