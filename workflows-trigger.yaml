@@ -1,0 +1,40 @@
+name: Sync HackerRanks commit's to HackerRank-Solutions repo
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.TOKEN }}
+    - name: Check if Commit Message Contains '[HackerRank]'
+      if : "contains(github.event.head_commit.message, '[HackerRank]')"
+      run : |
+          echo "[LOG] It contains [HackerRank], will update to other repo"
+          cd ./HackerRank
+          echo "[LOG] Cloning HackerRank-Solutions"
+          git clone https://github.com/WendyYanto/HackerRank-Solutions.git temp
+          echo "[LOG] Copying all cpp files to temp"
+          cp *.cpp temp
+          cd temp
+          echo "[LOG] Setup global config"
+          git config --global user.email "${{ secrets.USER_EMAIL }}"
+          git config --global user.name "${{ secrets.USER_NAME }}"
+          echo "[LOG] Git set-url remote repository"
+          git remote set-url origin https://x-access-token:${{ secrets.TOKEN }}@github.com/WendyYanto/HackerRank-Solutions
+          echo "[LOG] Git pull origin"
+          git config pull.rebase false
+          echo "[LOG] Git add ."
+          git add .
+          echo "[Log] Git Commit"
+          git commit -m "Synchronize from private repository - Triggered by Github Workflows"
+          echo "[LOG] Git push"
+          git push
+          echo "[LOG] Remove Folder"
+          cd ..
+          rm -rf temp
+            
