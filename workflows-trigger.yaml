@@ -26,9 +26,6 @@ jobs:
           git config --global user.name "${{ secrets.USER_NAME }}"
           echo "[LOG] Git set-url remote repository"
           git remote set-url origin https://x-access-token:${{ secrets.TOKEN }}@github.com/WendyYanto/HackerRank-Solutions
-          echo "[LOG] Git pull origin"
-          git config pull.rebase false
-          git pull
           echo "[LOG] Git add ."
           git add .
           echo "[Log] Git Commit"
