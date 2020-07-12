@@ -17,7 +17,7 @@ jobs:
           echo "[LOG] It contains [HackerRank], will update to other repo"
           cd ./HackerRank
           echo "[LOG] Cloning HackerRank-Solutions"
-          git clone https://github.com/WendyYanto/HackerRank-Solutions.git temp
+          git clone https://github.com/WendyYanto/hackerrank-solutions.git temp
           echo "[LOG] Copying all cpp files to temp"
           cp *.cpp temp
           cd temp
