@@ -25,7 +25,7 @@ jobs:
           git config --global user.email "${{ secrets.USER_EMAIL }}"
           git config --global user.name "${{ secrets.USER_NAME }}"
           echo "[LOG] Git set-url remote repository"
-          git remote set-url origin https://x-access-token:${{ secrets.TOKEN }}@github.com/WendyYanto/HackerRank-Solutions
+          git remote set-url origin https://x-access-token:${{ secrets.TOKEN }}@github.com/WendyYanto/hackerrank-solutions
           echo "[LOG] Git add ."
           git add .
           echo "[Log] Git Commit"
